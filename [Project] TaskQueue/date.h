@@ -3,7 +3,7 @@
 #include <exception>
 #include <string>
 
-const int Months[12] = { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+const int MonthsArr[12] = { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
 
 bool isLeapYear(int year);
 
@@ -14,24 +14,26 @@ public:
 
 	class BadNumbersInDate : public std::exception
 	{
-
+	public:
+		BadNumbersInDate(const char* str) : std::exception(str) {}
+		virtual char const* what() const { return std::exception::what(); }
 	};
 
-	Date(unsigned short d = 1, unsigned short m = 1, unsigned short y = 1,
-		unsigned short h = 1, unsigned short mi = 1);
+	Date(unsigned int d = 1, unsigned int m = 1, unsigned int y = 1,
+		unsigned int h = 1, unsigned int mi = 1);
 
 
-	std::string ShowDate(bool system12h = false) const noexcept;
+	std::string ShowDayDate(bool system12h = false) const noexcept;
 
 
 private:
-	unsigned short day;
-	unsigned short month;
-	unsigned short year;
-	unsigned short hour;
-	unsigned short min;
+	unsigned int day;
+	unsigned int month;
+	unsigned int year;
+	unsigned int hour;
+	unsigned int min;
 
-	void CheckDate() const //throws exception if date elements are not valid
+	void CheckDate() const; //throws exception if date elements are not valid
 
 
 };
