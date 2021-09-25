@@ -23,7 +23,9 @@ public:
 		unsigned int h = 1, unsigned int mi = 1);
 
 
-	std::string ShowDayDate(bool system12h = false) const noexcept;
+	std::string ShowDayDate() const noexcept;
+	std::string ShowHourDate(bool system12h = false) const noexcept;
+	std::string ShowFullDate(bool system12h = false) const noexcept;
 
 
 private:

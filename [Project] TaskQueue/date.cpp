@@ -27,7 +27,7 @@ Date::Date(unsigned int d, unsigned int m, unsigned int y,
 	CheckDate();
 }
 
-std::string Date::ShowDayDate(bool system12h) const noexcept
+std::string Date::ShowDayDate() const noexcept
 {
 	std::string	strDayDate = "";
 	if (day < 10) strDayDate += '0';
@@ -36,6 +36,36 @@ std::string Date::ShowDayDate(bool system12h) const noexcept
 	strDayDate += std::to_string(month) + '.' + std::to_string(year);
 
 	return strDayDate;
+}
+
+std::string Date::ShowHourDate(bool system12h) const noexcept
+{
+	std::string strHourDate = "";
+	if (!system12h)
+	{
+		if (hour < 10) strHourDate += '0';
+		strHourDate += std::to_string(hour);
+	}
+	else
+	{
+		int tempHour = hour;
+		if (hour > 12) tempHour -= 12;
+		if (hour < 10) strHourDate += '0';
+		strHourDate += std::to_string(tempHour);
+	}
+
+	strHourDate += ":";
+
+	if(min < 10) strHourDate += '0';
+	strHourDate += std::to_string(min);
+
+	return strHourDate;
+
+}
+
+std::string Date::ShowFullDate(bool system12h) const noexcept
+{
+	return  ShowDayDate() + " " +ShowHourDate(system12h);
 }
 
 void Date::CheckDate() const
@@ -47,6 +77,6 @@ void Date::CheckDate() const
 		if (isLeapYear(year) && month == 2 && day == 29);
 		else throw BadNumbersInDate("Date.day is not correct day number.");
 	}
-	if (hour < 1 || hour > 24) throw BadNumbersInDate("Date.hour is not between <1,24>.");
-	if (min < 1 || min > 60) throw BadNumbersInDate("Date.min is not between <1,60>");
+	if (hour < 0 || hour > 24) throw BadNumbersInDate("Date.hour is not between <1,24>.");
+	if (min < 0 || min > 60) throw BadNumbersInDate("Date.min is not between <1,60>");
 }
