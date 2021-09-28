@@ -1,4 +1,5 @@
 #include "pch.h"
+#include "ui.h"
 #include <iostream>
 #include <string>
 
@@ -8,12 +9,6 @@ int ProducerMenu();
 int CustomerMenu();
 
 
-namespace INFO
-{
-	const std::string VERSION = "PreAlpha";
-	const std::string PRODUCER = "Intelek";
-	const std::string HEADLINE = "----------Task Queue App----------\n\n";
-}
 
 int MainMenu()
 {
