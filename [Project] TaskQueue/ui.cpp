@@ -2,6 +2,7 @@
 #include "ui.h"
 #include <iostream>
 #include <string>
+#include <algorithm>
 
 int MainMenu();
 void About();
@@ -40,7 +41,7 @@ void About()
 	cout << INFO::HEADLINE;
 	cout << "Version: " << INFO::VERSION;
 	cout << "\nProducer: " << INFO::PRODUCER;
-	cout << "\n\nPress 'Enter' key to continue..";
+	cout << endl;
 	while (std::cin.get() != '\n') continue;
 	std::cin.get();
 }
@@ -68,6 +69,18 @@ int ProducerMenu()
 	return x;
 }
 
+void SetTaskCompleted()
+{
+	using std::cout;
+	using std::endl;
+
+	int x;
+	system("cls");
+
+	cout << INFO::HEADLINE;
+	tsk.setStatus(Task::COMPLETED); //TODO
+}
+
 int CustomerMenu()
 {
 	using std::cout;
@@ -88,5 +101,23 @@ int CustomerMenu()
 	std::cin >> x;
 
 	return x;
+}
+
+void TaskList(std::vector<Task>& vec)
+{
+	std::sort(vec.begin(), vec.end()); //probably not good idea
+
+	system("cls");
+	std::cout << INFO::HEADLINE;
+	std::cout << "List of tasks\n\n";
+
+	size_t ct = 1;
+	for (auto& i : vec)
+	{
+		std::cout << "(" << ct++ << ") " << i << "\n";
+	}
+
+	while (std::cin.get() != '\n') continue;
+	std::cin.get();
 }
 

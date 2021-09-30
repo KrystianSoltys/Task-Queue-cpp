@@ -21,6 +21,15 @@ bool isLeapYear(int year)
 	return false;
 }
 
+int abs(const unsigned int& a, const unsigned int &b)
+{
+	int x = (a - b);
+	if (x < 0) x = -x;
+	return x;
+}
+
+/////////////////////////////////////////////////////////////
+
 Date::Date(unsigned int d, unsigned int m, unsigned int y,
 	unsigned int h, unsigned int mi, bool checkBefore) :
 	day(d), month(m), year(y), hour(h), min(mi)
@@ -76,6 +85,51 @@ bool Date::isBeforeNow()
 
 	return beforeNow;
 }
+
+//std::string Date::ShowRemaining() const //need to be refactored
+//{
+//	time_t t = time(0);
+//	tm local;
+//	localtime_s(&local, &t);
+//
+//	Date currentDate(local.tm_mday, local.tm_mon + 1, local.tm_year + 1900, local.tm_hour, local.tm_min, false);
+//
+//	std::string temp = "";
+//	bool needMultiEnding = false;
+//
+//	if (abs(year, currentDate.year) > 0)
+//	{
+//		if(abs(year, currentDate.year > 1)) needMultiEnding = true;
+//		temp += std::to_string(abs(currentDate.year, year)) + " year";
+//	}
+//	else if (abs(month, currentDate.month) > 0)
+//	{
+//		if (abs(month, currentDate.month > 1)) needMultiEnding = true;
+//		temp += std::to_string(abs(currentDate.month, month)) + " month";
+//	}
+//	else if (abs(day, currentDate.day) > 0)
+//	{
+//		if (abs(day, currentDate.day > 1)) needMultiEnding = true;
+//		temp += std::to_string(abs(currentDate.day, day)) + " day";
+//	}
+//	else if (abs(hour, currentDate.hour) > 0)
+//	{
+//		if (abs(hour, currentDate.hour > 1)) needMultiEnding = true;
+//		temp += std::to_string(abs(currentDate.hour, hour)) + " hour";
+//	}
+//	else if (abs(min, currentDate.min) > 0)
+//	{
+//		if (abs(min, currentDate.min > 1)) needMultiEnding = true;
+//		temp += std::to_string(abs(currentDate.min, min)) + " minute";
+//	}
+//
+//	if (needMultiEnding) temp += "s";		//more than 2 year,days etc.
+//	if (currentDate < *this) temp += " remaining";
+//	else temp += " deleayed";				//exacly the same time means "delayed"!
+//
+//	
+//	return temp;
+//}
 
 std::string Date::ShowDayDate() const noexcept
 {

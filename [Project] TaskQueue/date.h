@@ -6,6 +6,7 @@
 const int MonthsArr[12] = { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
 
 bool isLeapYear(int year);
+int abs(int x);
 
 
 class Date
@@ -30,7 +31,7 @@ public:
 	bool operator< (const Date& obj) const noexcept;
 	bool isBeforeNow();
 
-
+	//std::string ShowRemaining() const; //need to count propertly
 	std::string ShowDayDate() const noexcept;
 	std::string ShowHourDate(bool system12h = false) const noexcept;
 	std::string ShowFullDate(bool system12h = false) const noexcept;

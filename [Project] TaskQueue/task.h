@@ -17,7 +17,11 @@ public:
 	Task(const std::string& nm, const std::string& desc, StatusEnum stat,
 		 const Date& dt);
 
+	bool operator< (const Task& obj) const noexcept;
+	void setStatus(Task::StatusEnum en = COMPLETED) noexcept;
+
 	friend std::ostream& operator<< (std::ostream& os, const Task& obj);
+
 
 private:
 

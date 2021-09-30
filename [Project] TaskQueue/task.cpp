@@ -8,12 +8,22 @@ Task::Task(const std::string& nm, const std::string& desc,
 {
 }
 
+bool Task::operator<(const Task & obj) const noexcept
+{
+	return (this->questDate < obj.questDate);
+}
+
+void Task::setStatus(Task::StatusEnum en) noexcept
+{
+	taskStatus = en;
+}
+
 std::ostream& operator<< (std::ostream& os, const Task& obj) //to rebuild, just for debug
 {
 	using std::cout;
 	using std::endl;
 
-	HANDLE handleCon = GetStdHandle(STD_OUTPUT_HANDLE);
+	auto handleCon = GetStdHandle(STD_OUTPUT_HANDLE);
 
 	switch (obj.taskStatus)
 	{
