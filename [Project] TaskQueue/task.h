@@ -21,7 +21,7 @@ public:
 	void setStatus(Task::StatusEnum en = COMPLETED) noexcept;
 
 	friend std::ostream& operator<< (std::ostream& os, const Task& obj);
-
+	friend void SaveData(std::vector<Task>& vec);
 
 private:
 

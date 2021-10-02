@@ -6,8 +6,7 @@
 const int MonthsArr[12] = { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
 
 bool isLeapYear(int year);
-int abs(int x);
-
+int abs(const unsigned int& a, const unsigned int &b);
 
 class Date
 {
@@ -35,10 +34,8 @@ public:
 	std::string ShowDayDate() const noexcept;
 	std::string ShowHourDate(bool system12h = false) const noexcept;
 	std::string ShowFullDate(bool system12h = false) const noexcept;
+	std::string FullDateForSave() const noexcept;
 
-
-
-private:
 	unsigned int day;
 	unsigned int month;
 	unsigned int year;

@@ -1,0 +1,9 @@
+TODO App
+Make a great TODO App
+completed 2 10 2021 23 18Install app
+Install internet browser
+awaiting 3 10 2021 15 20Appointment
+Make a nice appointment
+awaiting 4 10 2021 15 0Write poem
+Stop writing in C++, write a poem
+cantbedone 4 10 2021 20 0

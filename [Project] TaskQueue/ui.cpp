@@ -1,5 +1,6 @@
 #include "pch.h"
 #include "ui.h"
+#include "loader.h"
 #include <iostream>
 #include <string>
 #include <algorithm>
@@ -25,7 +26,7 @@ int MainMenu()
 	cout << "[1] Producer\n";
 	cout << "[2] Customer\n\n";
 	cout << "[3] About\n";
-	cout << "[4] Exit\n";
+	cout << "[0] Exit\n";
 	//while (std::cin.get() != '\n') continue;
 	std::cin >> x;
 
@@ -178,6 +179,8 @@ void SetTaskCompleted(std::vector<Task>& vec)
 	{
 		vec.at(x - 1).setStatus(Task::COMPLETED);
 	}
+
+	SaveData(vec);
 }
 
 void SetTaskAwaiting(std::vector<Task>& vec)
@@ -187,6 +190,8 @@ void SetTaskAwaiting(std::vector<Task>& vec)
 	{
 		vec.at(x - 1).setStatus(Task::AWAITING);
 	}
+
+	SaveData(vec);
 }
 
 void SetTaskCantbedone(std::vector<Task>& vec)
@@ -196,6 +201,8 @@ void SetTaskCantbedone(std::vector<Task>& vec)
 	{
 		vec.at(x - 1).setStatus(Task::CANTBEDONE);
 	}
+
+	SaveData(vec);
 }
 
 
@@ -249,6 +256,8 @@ void AddTask(std::vector<Task>& vec)
 	vec.push_back(Task(name, description, Task::AWAITING, Date(day, month, year, hour, min)));
 
 	std::sort(vec.begin(), vec.end());
+
+	SaveData(vec);
 }
 
 void DeleteTask(std::vector<Task>& vec)
@@ -287,6 +296,8 @@ void DeleteTask(std::vector<Task>& vec)
 	}
 
 	std::sort(vec.begin(), vec.end());
+
+	SaveData(vec);
 }
 
 void EditTask(std::vector<Task>& vec)
@@ -328,7 +339,7 @@ void EditTask(std::vector<Task>& vec)
 
 	system("cls");
 	std::cout << INFO::HEADLINE;
-	std::cout << vec[choice - 1] << std::endl;
+	std::cout << std::endl << vec[choice - 1] << std::endl << std::endl;
 
 	while (std::cin.get() != '\n') continue;
 	cout << "Enter task name: ";
@@ -359,4 +370,6 @@ void EditTask(std::vector<Task>& vec)
 	vec[choice - 1] = Task(name, description, en, Date(day, month, year, hour, min));
 
 	std::sort(vec.begin(), vec.end());
+
+	SaveData(vec);
 }

@@ -6,7 +6,7 @@
 
 namespace INFO
 {
-	const std::string VERSION = "PreAlpha";
+	const std::string VERSION = "Alpha v1.0";
 	const std::string PRODUCER = "Intelek";
 	const std::string HEADLINE = "----------Task Queue App----------\n\n";
 	const std::string CONTACT = "intelektft@gmail.com";
@@ -26,7 +26,7 @@ void SetTaskCantbedone(std::vector<Task>& vec);
 
 //Cutomer
 int CustomerMenu();
-void AddTask(std::vector<Task>& vec);
-void DeleteTask(std::vector<Task>& vec);
-void EditTask(std::vector<Task>& vec);
+void AddTask	(std::vector<Task>& vec);
+void DeleteTask	(std::vector<Task>& vec);
+void EditTask	(std::vector<Task>& vec);
 

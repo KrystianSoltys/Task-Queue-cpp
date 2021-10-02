@@ -172,6 +172,12 @@ std::string Date::ShowFullDate(bool system12h) const noexcept
 	return  ShowDayDate() + " " +ShowHourDate(system12h);
 }
 
+std::string Date::FullDateForSave() const noexcept
+{
+	return std::to_string(day) + ' ' + std::to_string(month) + ' ' + std::to_string(year)+
+			' ' + std::to_string(hour) + ' ' + std::to_string(min);
+}
+
 void Date::CheckDate() const
 {
 	if (year < 1900 || year > 3000) throw BadNumbersInDate("Date.year is not between <1900,3000>.");
