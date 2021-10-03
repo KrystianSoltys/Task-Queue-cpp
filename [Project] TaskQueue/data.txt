@@ -1,4 +1,8 @@
-TODO App
+Print photo
+Print my doughter's photo
+completed 28 9 2021 9 30Order pizza
+Remember to order Margherita
+completed 30 9 2021 19 0TODO App
 Make a great TODO App
 completed 2 10 2021 23 18Install app
 Install internet browser
