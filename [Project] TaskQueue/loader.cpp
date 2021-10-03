@@ -5,6 +5,8 @@
 
 const char* file = "data.txt";
 
+
+
 void LoadData(std::vector<Task>& vec)
 {
 	std::ofstream createFile(file, std::ios_base::app); //weird way to avoid opening not existing file
@@ -37,12 +39,14 @@ void LoadData(std::vector<Task>& vec)
 	fin.close();
 
 	std::sort(vec.begin(), vec.end());
+	SetTimeIsUp(vec);
 }
 
 void SaveData(std::vector<Task>& vec)
 {
 	using std::endl;
 
+	SetTimeIsUp(vec);
 	std::ofstream fout(file, std::ios_base::out);
 	if (!fout.is_open())	throw FileException("File opening failure");
 

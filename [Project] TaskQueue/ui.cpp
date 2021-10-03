@@ -11,7 +11,13 @@ void About();
 int ProducerMenu();
 int CustomerMenu();
 
-
+void SetTimeIsUp(std::vector<Task>& vec)
+{
+	for (auto& i : vec)
+	{
+		if (!i.isBeforeNow() && i.taskStatus == Task::AWAITING) i.setStatus(Task::TIMEISUP);
+	}
+}
 
 int MainMenu()
 {
@@ -168,6 +174,8 @@ size_t VirtualSetTask(std::vector<Task>& vec, Task::StatusEnum en)
 		std::cout << " Task (0 to cancel): ";
 	}
 
+	SetTimeIsUp(vec);
+
 	return choice;
 }
 
@@ -256,6 +264,8 @@ void AddTask(std::vector<Task>& vec)
 	vec.push_back(Task(name, description, Task::AWAITING, Date(day, month, year, hour, min)));
 
 	std::sort(vec.begin(), vec.end());
+
+	SetTimeIsUp(vec);
 
 	SaveData(vec);
 }
@@ -370,6 +380,7 @@ void EditTask(std::vector<Task>& vec)
 	vec[choice - 1] = Task(name, description, en, Date(day, month, year, hour, min));
 
 	std::sort(vec.begin(), vec.end());
+	SetTimeIsUp(vec);
 
 	SaveData(vec);
 }

@@ -1,6 +1,7 @@
 #include "pch.h"
 #include "task.h"
 #include <Windows.h>
+#include <iomanip>
 
 Task::Task(const std::string& nm, const std::string& desc,
 		   StatusEnum stat, const Date& dt) :
@@ -18,41 +19,47 @@ void Task::setStatus(Task::StatusEnum en) noexcept
 	taskStatus = en;
 }
 
+bool Task::isBeforeNow()
+{
+	return questDate.isBeforeNow();
+}
+
 std::ostream& operator<< (std::ostream& os, const Task& obj) //to rebuild, just for debug
 {
 	using std::cout;
 	using std::endl;
+	using std::setw;
 
 	auto handleCon = GetStdHandle(STD_OUTPUT_HANDLE);
-
+	os << std::left;
 	switch (obj.taskStatus)
 	{
 	case Task::StatusEnum::COMPLETED:
 		{
 			SetConsoleTextAttribute(handleCon, 10);
-			os << obj.name << "\t" << obj.description << "\t(Completed)\t"
-				<< obj.questDate.ShowFullDate();
+			os << setw(20) << obj.name << "\t" << setw(40) << obj.description 
+				<< "\t(Completed)\t" << obj.questDate.ShowFullDate();
 			break;
 		}
 	case Task::StatusEnum::AWAITING:
 	{
 		SetConsoleTextAttribute(handleCon, 14);
-		os << obj.name << "\t" << obj.description << "\t(Awaiting)\t"
-			<< obj.questDate.ShowFullDate();
+		os << setw(20) << obj.name << "\t" << setw(40) << obj.description
+			<< "\t(Awaiting)\t" << obj.questDate.ShowFullDate();
 		break;
 	}
 	case Task::StatusEnum::CANTBEDONE:
 	{
 		SetConsoleTextAttribute(handleCon, 13);
-		os << obj.name << "\t" << obj.description << "\t(Can't be done)\t"
-			<< obj.questDate.ShowFullDate();
+		os << setw(20) << obj.name << "\t" << setw(40) << obj.description
+			<< "\t(Can't be done)\t" << obj.questDate.ShowFullDate();
 		break;
 	}
 	case Task::StatusEnum::TIMEISUP:
 	{
 		SetConsoleTextAttribute(handleCon, 12);
-		os << obj.name << "\t" << obj.description << "\t(Time's up)\t"
-			<< obj.questDate.ShowFullDate();
+		os << setw(20) << obj.name << "\t" << setw(40) << obj.description
+			<< "\t(Time is up)\t" << obj.questDate.ShowFullDate();
 		break;
 	}
 	default:

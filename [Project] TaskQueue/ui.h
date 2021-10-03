@@ -6,9 +6,9 @@
 
 namespace INFO
 {
-	const std::string VERSION = "Alpha v1.0";
+	const std::string VERSION = "Alpha v1.1";
 	const std::string PRODUCER = "Intelek";
-	const std::string HEADLINE = "----------Task Queue App----------\n\n";
+	const std::string HEADLINE = "--------------------Task Queue App--------------------\n\n";
 	const std::string CONTACT = "intelektft@gmail.com";
 }
 

@@ -19,9 +19,11 @@ public:
 
 	bool operator< (const Task& obj) const noexcept;
 	void setStatus(Task::StatusEnum en = COMPLETED) noexcept;
+	bool isBeforeNow();
 
 	friend std::ostream& operator<< (std::ostream& os, const Task& obj);
 	friend void SaveData(std::vector<Task>& vec);
+	friend void SetTimeIsUp(std::vector<Task>& vec);
 
 private:
 
